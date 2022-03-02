@@ -3,8 +3,6 @@ import mongoose from 'mongoose'
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema
 
-const Schema = mongoose.Schema
-	
 const flightSchema = new Schema({
   airline: {
     type: String,
@@ -23,7 +21,14 @@ const flightSchema = new Schema({
   departs: {
     type: Date,
     default: function(){
-      return Date.now() 
+      return Date.now() + 365
     }
   }
 })
+
+// Compile the schema into a model and export it
+const Flight = mongoose.model('Flight', flightSchema)
+
+export {
+  Flight
+}
