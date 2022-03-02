@@ -23,7 +23,7 @@ const flightSchema = new Schema({
     default: function(){
       return Date.now() + 365
     }
-  }
+  },
 })
 
 // Compile the schema into a model and export it
