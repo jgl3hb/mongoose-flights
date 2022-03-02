@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title>Mongoose Flights</title>
+</head>
+<nav>
+  <a href="/">Home</a>
+  <a href="/flights">All Flights</a>
+  <a href="/flights/new">New Flight</a>
+  <a href="/meals/new">Flight Meals</a>
+</nav>
+<body>
+  <h1>Flight List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Airport</th>
+        <th>Airline</th>
+        <th>Departing</th>
+        <th>Booking</th>
+        <th>🗑</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flights.forEach(flight => { %>
+        <tr>
+          <td><%= flight.flightNo %></td>
+          <td><%= flight.airport %></td>
+          <td><%= flight.airline %></td>
+          <td><%= flight.departs %></td>
+          <td><a href="/flights/<%= flight._id %>">Book</a></td>
+          <td>
+            <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
+              <button>X</button>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
