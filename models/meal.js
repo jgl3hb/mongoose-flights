@@ -7,7 +7,7 @@ const mealSchema = new Schema({
     type: String, 
     required: true,
     unique: true,
-  }
+  },
 })
 
 const Meal = mongoose.model("Meal",

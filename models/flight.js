@@ -30,11 +30,13 @@ const flightSchema = new Schema({
   },
   departs: {
     type: Date,
-    default: Date.now() + 365*24*60*60*1000
-  },
-  tickets: {
-    type: [ticketSchema]
-  }
+    default: function() {
+      return Date.now() + 365*24*60*60000
+  }}, 
+  tickets: [ticketSchema],
+  eats: [{type: Schema.Types.ObjectId, ref: 'Meal'}]
+}, {
+  timestamps: true
 })
 
 const Flight = mongoose.model("Flight", flightSchema)

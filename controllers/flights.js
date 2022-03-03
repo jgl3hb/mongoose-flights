@@ -1,11 +1,12 @@
 import { Flight } from '../models/flight.js'
+import { Meal } from '../models/meal.js'
 
 function index(req, res){
   Flight.find({}).sort({departs: 'asc'}).exec ((error, flights) => {
     console.log(error)
     res.render("flights/", {
-      error,
-      flights
+      error: error,
+      flights: flights,
     })
   })
 }
@@ -24,15 +25,25 @@ function create(req, res) {
   })
 }
 
-function show(req, res){
+// function show(req, res){
+//   Flight.findById(req.params.id, function (err, flight){
+//     res.render('flights/show', {
+//       title: "Flight Detail",
+//       flight
+//     })
+//   })
+// }
+
+function show(req, res) {
   Flight.findById(req.params.id)
-  .populate('meals')
+  .populate('eats')
   .exec(function(err, flight) {
-    Meal.find({_id: {$nin: flight.meals}}, function(err, meals) {
+    Meal.find({_id: {$nin: flight.eats}}, 
+      function(err, meals) {
       res.render('flights/show', {
-        title: 'Flight Details', 
-        flight,
-        meals
+        title: 'Flight Detail', 
+        flight: flight,
+        meals: meals,
       })
     })
   })
