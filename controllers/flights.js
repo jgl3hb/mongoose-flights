@@ -11,7 +11,6 @@ function index(req, res){
   })
 }
 
-
 function newFlight(req, res) {
   res.render('flights/new')
   flight: "Add Flight"

@@ -15,6 +15,7 @@ router.post('/:id/tickets', flightsCtrl.createTicket)
 // POST - localhost:3000/flights/:id/tickets
 router.post('/:id/meals', flightsCtrl.addMeal);
 
+router.delete('/:id', flightsCtrl.delete)
 
 export {
   router
