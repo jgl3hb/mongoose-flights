@@ -34,7 +34,7 @@ const flightSchema = new Schema({
       return Date.now() + 365*24*60*60000
   }}, 
   tickets: [ticketSchema],
-  eats: [{type: Schema.Types.ObjectId, ref: 'Meal'}]
+  meals: [{type: Schema.Types.ObjectId, ref: 'Meal'}]
 }, {
   timestamps: true
 })
