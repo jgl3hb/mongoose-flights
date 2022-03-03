@@ -3,7 +3,7 @@ import * as mealsCtrl from "../controllers/meals.js"
 
 const router = Router()
 
-// ! localhost:3000/meals
+// localhost:3000/meals
 
 // GET - localhost:3000/performers/new
 router.get("/new", mealsCtrl.new)
